@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <script src="https://aframe.io/releases/0.6.0/aframe.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"> </script>
+        <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"> </script>
+        <script src="./Shoot.js"></script>
+    </head>
+    <body>
+    <a-scene>
+    <a-entity id="enviorment" enviorment="preset:default; skyType:gradiant; lightning:point">
+
+    </a-entity>
+
+    <audio id="shoot" src="./sound.splash.mp3"></audio>
+    <audio id="footstep" src="./sound.footstep.mp3"></audio>
+
+    <a-entity id="sound1" src="#shoot; poolSize:2; autoplay:false; volume:false; loop:false"></a-entity>
+    <a-entity id="sound2" src="#footstep; poolSize:2; autoplay:false; volume:4; loop:false"></a-entity>
+
+
+    <a-asset-item id="#collider" src="./models/navmesh.gltf"></a-asset-item>
+
+    <a-entity id="navigation-mesh" position="0 -1 0" gltf-model="#collider" visible="false" nav-mesh></a-entity>
+
+    <a-entity id="camera-rig" movement-controlls="speed:0.2; constrainToNavMesh:true;" position="0 0 5">
+    <a-entity id="camera" position="0 1.6 0"
+    look-controlls="pointerLockEnabled: false">
+    <a-entity id="weapon" gltf-model="#shooter" position="0.17 -2.76 -0.88" rotation="-20 -145 20" scale="0.5 0.5 0.5"
+    player-movement>
+    </a-entity>
+    <a-cursor></a-cursor>
+    </a-entity>
+
+    </a-entity>
+    </a-scene>
+    </body>
+
+</html>
